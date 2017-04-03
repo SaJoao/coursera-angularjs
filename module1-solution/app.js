@@ -7,7 +7,7 @@
 
     $scope.checkIfToMuch = function() {
 
-      if($scope.lunchItems.length == 0) {
+      if($scope.lunchItems.length === 0) {
         $scope.message = "Please enter data first";
       } else {
         var itemsObj = processItems($scope.lunchItems);
@@ -21,10 +21,14 @@
       }
     }
 
-    $scope.clear = function() {
-      $scope.lunchItems = "";
+    $scope.clearMessage = function() {
       $scope.message = "";
       $scope.emptyItems = false;
+    }
+
+    $scope.clear = function() {
+      $scope.clearMessage();
+      $scope.lunchItems = "";
     }
 
     function myTrim(x) {
@@ -33,9 +37,10 @@
 
     function processItems(items) {
 
-      var ret = {};
-      ret.emptyItems = false;
-      ret.items = [];
+      var ret = {
+        "emptyItems": false,
+        "items": []
+      };
 
       var itemsArray = $scope.lunchItems.split(",");
       itemsArray.forEach(function(item, idx) {
@@ -50,7 +55,7 @@
       return ret;
     }
 
-    
+
     $scope.clear();
 
   } ])
