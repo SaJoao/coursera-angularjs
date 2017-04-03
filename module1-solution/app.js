@@ -3,7 +3,10 @@
 
   angular.module('LunchCheck', [])
 
-  .controller('LunchCheckController', [ '$scope', function($scope) {
+  .controller('LunchCheckController', LunchCheckController);
+
+  LunchCheckController.$inject = ['$scope'];
+  function LunchCheckController($scope) {
 
     $scope.checkIfToMuch = function() {
 
@@ -58,5 +61,5 @@
 
     $scope.clear();
 
-  } ])
+  }
 })();
