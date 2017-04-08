@@ -10,21 +10,21 @@
   <body>
       <div ng-controller='ToBuyController as buyCtrl'>
         <h2>To Buy</h2>
-        <p ng-if="buyList.length === 0">Everything is bought!</p>
-        <ul ng-if="buyList.length !== 0">
-          <li ng-repeat="item in buyList">
+        <p ng-if="buyCtrl.buyList.length === 0">Everything is bought!</p>
+        <ul ng-if="buyCtrl.buyList.length !== 0">
+          <li ng-repeat="item in buyCtrl.buyList">
             Buy {{item.quantity}} {{item.name}}
-            <button ng-click="buy($index)">Buy</button>
+            <button ng-click="buyCtrl.buy($index)">Buy</button>
           </li>
         </ul>
       </div>
       <div ng-controller="AlreadyBoughtController as boughtCtrl">
         <h2>Already Bought</h2>
-        <p ng-if="boughtList.length === 0">Nothing bought yet</p>
-        <ul ng-if="boughtList.length !== 0">
-          <li ng-repeat="item in boughtList">
+        <p ng-if="boughtCtrl.boughtList.length === 0">Nothing bought yet</p>
+        <ul ng-if="boughtCtrl.boughtList.length !== 0">
+          <li ng-repeat="item in boughtCtrl.boughtList">
             Bought {{item.quantity}} {{item.name}}
-            <button ng-click="cancel($index)">Cancel</button>
+            <button ng-click="boughtCtrl.cancel($index)">Cancel</button>
           </li>
         </ul>
       </div>
