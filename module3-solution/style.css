@@ -1,0 +1,18 @@
+p {
+  color: green;
+  border-style: solid;
+  border-color: green;
+}
+
+.emptyItems {
+  font-size: small;
+  color: black;
+  border-style: none;
+}
+
+.nodata {
+  color: red;
+  border-style: solid;
+  border-width: medium;
+  border-color: red;
+}
