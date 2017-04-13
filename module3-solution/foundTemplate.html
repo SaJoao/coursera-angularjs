@@ -1,0 +1,12 @@
+<div ng-if="items.length <= 0">
+  <span class="title">{{message}}</span>
+</div>
+<div ng-repeat="item in items">
+  <div class="item">
+    <span class="title">({{item.short_name}}) {{item.name}}</span> </br>
+    <span class="description">{{item.description}}</span>
+  </div>
+  <div class="button">
+    <button ng-click="onRemove({index: $index})">Don't want this one!</button>
+  </div>
+</div>

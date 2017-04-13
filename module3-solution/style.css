@@ -1,18 +1,36 @@
-p {
-  color: green;
-  border-style: solid;
-  border-color: green;
-}
-
-.emptyItems {
-  font-size: small;
-  color: black;
+div {
+  font-family: sans-serif;
   border-style: none;
+  border-width: 1px;
+  padding-top: 5px;
+  padding-bottom: : 5px;
+  width: 700px;
 }
 
-.nodata {
-  color: red;
-  border-style: solid;
-  border-width: medium;
-  border-color: red;
+div.item {
+  width: 80%;
+  float:left;
+  border-top: solid;
+  border-color: grey;
+  border-width: 1px;
+}
+
+div.button {
+  width: 20%;
+  float: right;
+  border-top: solid;
+  border-color: grey;
+  border-width: 1px;
+}
+
+span.title {
+  font-size: 14px;
+}
+
+span.description {
+  font-size: 10px;
+}
+
+button.menu {
+  float: right;
 }

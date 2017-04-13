@@ -4,7 +4,8 @@
   angular.module('NarrowItDownApp', [])
 
   .controller('NarrowItDownController', NarrowItDownController)
-  .service('MenuSearchService', MenuSearchService);
+  .service('MenuSearchService', MenuSearchService)
+  .directive('foundItems', FoundItemsDirective);
 
   NarrowItDownController.$inject = ['$scope','MenuSearchService'];
   function NarrowItDownController($scope, MenuSearchService) {
@@ -17,8 +18,16 @@
         ctrl.found = items;
       },
       function(error) {
+        ctrl.message = "Nothing found";
         ctrl.found = [];
       });
+    }
+
+    ctrl.remove = function(index) {
+      ctrl.found.splice(index, 1);
+      if(ctrl.found.length === 0) {
+        ctrl.message = "No items left";
+      }
     }
   }
 
@@ -34,8 +43,9 @@
 
     var processItems = function(searchTerm, items) {
       var filteredItems = [];
+      var searchTermLower = searchTerm ? searchTerm.toLowerCase() : "";
       items.forEach(function(item){
-        if(item.description.indexOf(searchTerm) >= 0) {
+        if(item.description.toLowerCase().indexOf(searchTermLower) >= 0) {
           filteredItems.push(item);
         }
       }, this);
@@ -59,4 +69,16 @@
     };
   }
 
+  function FoundItemsDirective() {
+    var ddo = {
+      templateUrl: 'foundTemplate.html',
+      scope: {
+        items: '<found',
+        message: '<',
+        onRemove: '&'
+      }
+    };
+
+    return ddo;
+  }
 })();

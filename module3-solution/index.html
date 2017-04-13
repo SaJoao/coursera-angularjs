@@ -10,10 +10,15 @@
   <body ng-controller="NarrowItDownController as ctrl">
       <form>
         <input type="text" ng-model="searchTerm"/>
-        <button type="button" ng-click="ctrl.getMatchedMenuItems()">Get item</button>
+        <button type="button"
+                ng-click="ctrl.getMatchedMenuItems()">
+                Narrow It Down For Me!
+        </button>
       </form>
-      <div>
-        <p ng-repeat="item in ctrl.found">{{item.description}}</p>
-      </div>
+      <found-items
+          found="ctrl.found"
+          message="ctrl.message"
+          on-remove="ctrl.remove(index)">
+      </found-items>
   </body>
 </html>
