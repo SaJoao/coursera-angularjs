@@ -12,10 +12,16 @@
     var ctrl = this;
 
     ctrl.getMatchedMenuItems = function() {
-
+      //ctrl.found = [];
       MenuSearchService.getMatchedMenuItems($scope.searchTerm)
       .then(function(items) {
         ctrl.found = items;
+        if(ctrl.found.length === 0) {
+          ctrl.message = "Nothing found";
+        } else {
+          ctrl.message = "";
+        }
+
       },
       function(error) {
         ctrl.message = "Nothing found";
