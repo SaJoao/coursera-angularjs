@@ -12,21 +12,25 @@
     var ctrl = this;
 
     ctrl.getMatchedMenuItems = function() {
-      //ctrl.found = [];
-      MenuSearchService.getMatchedMenuItems($scope.searchTerm)
-      .then(function(items) {
-        ctrl.found = items;
-        if(ctrl.found.length === 0) {
-          ctrl.message = "Nothing found";
-        } else {
-          ctrl.message = "";
-        }
 
-      },
-      function(error) {
+      if($scope.searchTerm) {
+        MenuSearchService.getMatchedMenuItems($scope.searchTerm)
+        .then(function(items) {
+          ctrl.found = items;
+          if(ctrl.found.length === 0) {
+            ctrl.message = "Nothing found";
+          } else {
+            ctrl.message = "";
+          }
+        },
+        function(error) {
+          ctrl.message = "Nothing found";
+          ctrl.found = [];
+        });
+      } else {
         ctrl.message = "Nothing found";
         ctrl.found = [];
-      });
+      }
     }
 
     ctrl.remove = function(index) {
@@ -37,8 +41,8 @@
     }
   }
 
-  MenuSearchService.$inject = ['$http', '$q'];
-  function MenuSearchService($http, $q) {
+  MenuSearchService.$inject = ['$http'];
+  function MenuSearchService($http) {
     var url = 'https://davids-restaurant.herokuapp.com/menu_items.json';
     var getAllMenuItems = function() {
       return $http(
@@ -50,28 +54,22 @@
     var processItems = function(searchTerm, items) {
       var filteredItems = [];
       var searchTermLower = searchTerm ? searchTerm.toLowerCase() : "";
+
       items.forEach(function(item){
         if(item.description.toLowerCase().indexOf(searchTermLower) >= 0) {
           filteredItems.push(item);
         }
       }, this);
+
       return filteredItems;
     }
 
 
     this.getMatchedMenuItems = function(searchTerm) {
-
-      var defer = $q.defer();
-      if(!searchTerm) {
-        defer.reject();
-      }
-
-      getAllMenuItems()
+      return getAllMenuItems()
         .then(function(response){
-          defer.resolve(processItems(searchTerm, response.data.menu_items));
+          return processItems(searchTerm, response.data.menu_items);
         });
-
-      return defer.promise;
     };
   }
 
