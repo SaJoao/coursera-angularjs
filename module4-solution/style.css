@@ -5,7 +5,7 @@ div {
 
 div.home {
   width: 100%;
-  float: left;
+  float:none;
 }
 
 div.categories {
@@ -46,4 +46,14 @@ span.description {
 
 button.menu {
   float: right;
+}
+
+.home {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.active {
+  font-weight: bold;
 }

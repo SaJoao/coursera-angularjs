@@ -1,13 +1,20 @@
 <div class="categories">
-<ul ng-repeat="category in categoriesCtrl.categories">
-    <div class="category">
-    <li class="category">
-        <a ui-sref="categories.items({categoryId: $index})">
-          ({{category.short_name}}) {{category.name}}
-        </a>
-    </li>
+  <ul ng-repeat="category in categoriesCtrl.categories">
+      <div class="category">
+      <li class="category">
+          <a ui-sref="categories.items({categoryId: $index})"
+             ui-sref-active="active">
+            ({{category.short_name}}) {{category.name}}
+          </a>
+      </li>
+    </div>
+  </ul>
+  <div class="home">
+    <a ui-sref="home">Home</a>
   </div>
-</ul>
+</div>
+
+
 </div>
 <div class="items">
   <ui-view></ui-view>
