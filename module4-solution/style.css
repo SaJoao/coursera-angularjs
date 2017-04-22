@@ -1,0 +1,49 @@
+div {
+  font-family: sans-serif;
+  border-style: none;
+}
+
+div.home {
+  width: 100%;
+  float: left;
+}
+
+div.categories {
+  width: 20%;
+  float: left;
+}
+
+div.items {
+  float: right;
+  width: 80%;
+  padding-bottom: : 5px;
+}
+
+div.item {
+  border-top: solid;
+  border-color: grey;
+  border-width: 1px;
+}
+
+div.category {
+  border-color: grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+span.title {
+  font-size: 14px;
+}
+
+span.description {
+  font-size: 10px;
+}
+
+button.menu {
+  float: right;
+}
