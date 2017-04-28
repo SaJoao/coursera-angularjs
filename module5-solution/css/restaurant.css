@@ -9,6 +9,10 @@ body {
   margin-top: 60px;
 }
 
+input {
+  color: black;
+}
+
 /** HEADER **/
 #header-nav {
   background-color: #f6b319;
