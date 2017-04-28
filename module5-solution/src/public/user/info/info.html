@@ -1,0 +1,24 @@
+<div class="container">
+  <div ng-if="!infoCtrl.info.firstName">
+    <h2>Not Signed Up Yet.</h2>
+    <h3 ui-sref="public.sign"><a>Sign up Now!</a></h3>
+  </div>
+  <div ng-if="infoCtrl.info.firstName">
+    <div>
+      <span>Name: {{infoCtrl.info.firstName}} {{infoCtrl.info.lastName}}</span><br>
+      <span>Phone: {{infoCtrl.info.phone}}</span><br>
+      <span>Email: {{infoCtrl.info.email}}</span>
+    </div>
+    <div class="col-sm-5" ng-if="infoCtrl.info.menuItem">
+      <div class="menu-item-photo">
+        <div>{{infoCtrl.info.menuItem.short_name}}</div>
+        <img class="img-responsive" width="250" height="150"
+          ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.info.menuItem.short_name}}.jpg" alt="{{infoCtrl.info.menuItem.name}}">
+      </div>
+      <div>
+          <span>{{infoCtrl.info.menuItem.name}}</span><br>
+          <span>{{infoCtrl.info.menuItem.description}}</span>
+      </div>
+    </div>
+  </div>
+</div>

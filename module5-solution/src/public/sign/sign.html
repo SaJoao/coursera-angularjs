@@ -1,0 +1,71 @@
+<div class="container">
+  <form name="signForm" novalidate>
+    <input type="text"
+           name="firsName"
+           placeholder="First Name"
+           ng-model="signCtrl.user.firstName"
+           required
+           ng-maxlength="128">
+    </input>
+    <span>{{signCtrl.user.firstName}}</span>
+    <span ng-if="signForm.firsName.$error.maxlength && signForm.firsName.$touched">
+      First name must not exceed 128 characters
+    </span>
+    <br>
+    <input type="text"
+           name="lastName"
+           placeholder="Last Name"
+           ng-model="signCtrl.user.lastName"
+           required
+           ng-maxlength="128">
+    </input>
+    <span>{{signCtrl.user.lastName}}</span>
+    <span ng-if="signForm.lastName.$error.maxlength && signForm.lastName.$touched">
+      First name must not exceed 128 characters
+    </span>
+    <br>
+    <!-- <input type="text"
+           name="phone"
+           pattern="(\d{3})-(\d{3})-(\d{4})"
+           placeholder="Phone ###-###-####"
+           ng-model="signCtrl.user.phone">
+    </input> -->
+    <input type="text"
+           name="phone"
+           pattern="(\d{9})"
+           placeholder="Phone #########"
+           ng-model="signCtrl.user.phone">
+    </input>
+    <span>{{signCtrl.user.phone}}</span>
+    <span ng-if="signForm.phone.$invalid && signForm.phone.$touched">
+      Phone must be in the format ###-###-####.
+    </span>
+    <br>
+    <input type="email"
+           name="email"
+           placeholder="Email"
+           ng-model="signCtrl.user.mail"
+           required>
+    </input>
+    <span>{{signCtrl.user.email}}</span>
+    <span ng-if="signForm.email.$invalid && signForm.email.$touched">
+      Must be a valid email address: handle@domain format
+    </span>
+    <br>
+    <input type="text"
+           name="favorite"
+           placeholder="Favorite Menu Item"
+           ng-model="signCtrl.user.favorite">
+    </input>
+    <span>{{signCtrl.user.menuItem.name}}</span>
+    <span ng-if="signCtrl.invalidItem && signForm.favorite.$touched">
+      No such menu number exists
+    </span>
+    <br>
+    <button ng-disabled="signForm.$invalid"
+            ng-click="signCtrl.submit()">
+      Submit
+    </button>
+  </form>
+  <span ng-if="signCtrl.saved">Your information has been saved</span>
+</div>

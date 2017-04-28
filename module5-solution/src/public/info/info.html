@@ -1,0 +1,13 @@
+<div class="container">
+  <span>Name: {{infoCtrl.info.firstName}} {{infoCtrl.info.lastName}}</span><br>
+  <span>Phone: {{infoCtrl.info.phone}}</span><br>
+  <span>Email: {{infoCtrl.info.email}}</span>
+  <div class="col-sm-5">
+    <div class="menu-item-photo">
+      <div>{{$ctrl.info.menuItem.short_name}}</div>
+      <img class="img-responsive" width="250" height="150" ng-src="{{$ctrl.basePath}}/images/{{$ctrl.user.menuItem.short_name}}.jpg" alt="{{$ctrl.menuItem.name}}">
+    </div>
+    <div class="menu-item-price">{{$ctrl.info.menuItem.price_small | currency}}<span> {{$ctrl.info.menuItem.small_portion_name}}</span> {{$ctrl.info.menuItem.price_large | currency}} <span>{{$ctrl.info.menuItem.large_portion_name}}</span></div>
+  </div>
+
+</div>
